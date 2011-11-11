@@ -27,6 +27,7 @@ module Radibloga
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
     config.active_record.timestamped_migrations = false
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.encoding = "utf-8"
