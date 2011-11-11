@@ -1,8 +1,1 @@
-<%=
-flash.each do |key,message|
-	content_tag :div, :class => '#{key}_message' do
-		content_tag(:p, message.to_s)
-	end
-end
-%>
-	
+<%= notifications_display %>

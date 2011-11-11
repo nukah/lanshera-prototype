@@ -1,4 +1,6 @@
 Radibloga::Application.routes.draw do
+  devise_for :users
+
     resource :account
     get "home/index"
     root :to => 'home#index'
