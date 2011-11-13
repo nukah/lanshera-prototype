@@ -26,10 +26,10 @@ module Radibloga
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
+    config.i18n.locale = :ru
     config.active_record.timestamped_migrations = false
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
     config.assets.enabled = true

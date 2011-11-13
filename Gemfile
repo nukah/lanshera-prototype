@@ -3,9 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 gem 'sqlite3'
 gem 'devise'
+gem 'compass'
 
 group :development do 
-    gem 'rails-dev-boost'
+#    gem 'rails-dev-boost'
+    gem 'active_reload'
     gem 'pry-rails'
 end
 

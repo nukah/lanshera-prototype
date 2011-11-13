@@ -3,6 +3,54 @@ $aml_hover_color: #FAF2F0;
 $aml_color: #9AAEB9;
 $content_color: #F7F7F7;
 
+.block {
+	border-radius: 8px 8px 5px 5px;
+	box-shadow: 0 3px 6px 0 black;
+	clear: both;
+	float: none;
+	margin: 0 auto;
+}
+.auth {
+	@extend .block;
+	width: 500px;
+	margin-bottom: 50px;
+	.auth_header {
+	    border-top: 1px solid #44494D;
+	    border-top-left-radius: 5px;
+	    border-top-right-radius: 5px;
+	    height: 30px;
+	    line-height: 30px;
+	    text-shadow: 0 1px 1px #111111;
+		padding: 0 10px;
+	}
+	h2 { 
+		padding-left: 15px;
+		float: left;
+		margin: 0;
+	}
+	ul {
+		li {
+			display: inline;
+			padding-left: 15px;
+			padding-right: 5px;
+		}
+		margin: 0 auto;
+		float: right;
+	}
+	label {
+		font-size: 100%;
+		font-weight: bold;
+		color: black;
+	}
+	.auth_content {
+		padding: 15px;
+		overflow: auto;
+		background-color: rgba(255,255,255,0.7);
+		border: 1px solid rgba(63,53,53,1);
+		border-top: none;
+	}
+}
+
 .backlayer_top {
 	width: 100%;
 	position: absolute;
@@ -24,11 +72,12 @@ body {
 	border-style: dashed;
 	border-color: white;
 	border-width: 1px;
-	height: 400px;
+	overflow: auto;
 }
 
 .content {
 	letter-spacing: 1px;
+	padding: 15px 8px 15px 8px;
 	h1 {
 		font-weight: bold;
 		font-size: 150%;
@@ -80,6 +129,44 @@ body {
 	}
 }
 
+.login {
+	@extend .auth;
+		.email {
+			float: left;
+			width: 230px;
+		}
+		.password {
+			float: right;
+			width: 230px;
+		}
+		.divide {
+			clear: both;
+			display: block;
+			float: none;
+		}
+		.submit {
+			float: left;
+			padding-top: 10px;
+			display: block;
+		}
+		.remember {
+			float: right;
+			padding-top: 10px;
+		}
+}
+.register {
+	@extend .auth;
+	dt {
+		padding-bottom: 5px;
+	}
+	dd { 
+		padding-bottom: 15px;
+	}
+}
+.invisible {
+	opacity: 0;
+}
+
 .message	{
 	display: block;
 	-moz-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
@@ -95,6 +182,11 @@ body {
 	p {
 		margin: 0;
 	}
+}
+.alert {
+	@extend .message;
+	background-color: #F25F49;
+	border-color: #FF515A;
 }
 .notice {
 	@extend .message;
@@ -115,4 +207,36 @@ body {
 	@extend .message;
 	background-color: #61b832;
 	border-color: #55a12c;
+}
+
+input {
+	width: auto;
+	font-size: 15px;
+	color: #750600;
+	background-color: #F0D2B8;
+	outline:none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border:2px solid #382828;
+	&[type=submit] {
+		width: auto;
+		height: auto;
+		padding: 2px 15px 2px 15px;
+	}
+	&:focus {
+		box-shadow: 0 0 5px #717BE0;
+	    -webkit-box-shadow: 0 0 5px #717BE0; 
+	    -moz-box-shadow: 0 0 5px #717BE0;
+	    border:2px solid #717BE0;
+	}
+}
+button {
+	
+}
+textarea {
+	
 }
