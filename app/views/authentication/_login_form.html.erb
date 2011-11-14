@@ -1,16 +1,5 @@
-<%= javascript_tag do %>
-$(document).ready(function() {
-	$('#register_link').click(function() {
-		$('#register_panel').animate({
-			opacity: 1,
-			top: '+=40',
-			visibility: 'show'
-		},300);
-	});
-});
-<% end %>
 <div class="auth_header">
-	<%= content_tag(:h2, t('login')) %>
+	<%= content_tag(:h3, t('login')) %>
 	<ul>
 		<li><%= link_to "Register",'#', :id => 'register_link' %></li>
 		<li>restore password</li>

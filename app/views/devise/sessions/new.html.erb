@@ -1,8 +1,16 @@
+<%= authentication_error %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+	$('#register_link').click(function() {
+		$('.register').toggle('slow');
+	});
+});
+<% end %>
 <div class="authentication">
 	<div class="login">
 		<%= render :partial => 'authentication/login_form' %>
 	</div>
-	<div class="register invisible", id="register_panel">
+	<div class="register invisible" id="register_panel">
 		<%= render :partial => 'authentication/signup_form' %>
 	</div>
 </div>

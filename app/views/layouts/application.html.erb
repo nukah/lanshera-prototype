@@ -36,7 +36,7 @@
 			<%= yield %>
 		</div>
 		<div class="grid_3 sidebar">
-			<%= render :partial => 'partial/sidebar' %>
+			<%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'partial/sidebar') %>
 		</div>
 		<div class="clear"></div>
 	</div>

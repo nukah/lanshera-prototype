@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "flow.energy@gmail.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -69,7 +69,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "a00dcbffaf7efcdeed4d387e59a4359103d00813c36b59b058ae34b372ef7f5990df239f510534ac07d7107b54e2af8d3808b816d04cf4ab46213aa8fb8b1ff9"
+  config.pepper = "a00dcbffaf7efcdeed4d387e59a4359103d00813c36b59b058ae34b372ef7f5990df239f510534ac07d7107b54e2af8d3808b816d04cf4ab46213aa8fb8b1ff9"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -102,7 +102,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
-  # config.password_length = 6..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
@@ -153,7 +153,7 @@ Devise.setup do |config|
   # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
   # REST_AUTH_SITE_KEY to pepper)
-  # config.encryptor = :sha512
+  config.encryptor = :sha512
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key

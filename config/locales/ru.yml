@@ -1,3 +1,10 @@
 ru:
     login: 'Войти в RB'
     signup: 'Зарегистрироваться'
+    error: 'Ошибка'
+    activerecord:
+        models:
+            user: Пользователь
+        attributes:
+            user:
+                password: Пароль
