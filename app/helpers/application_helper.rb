@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def notifications_display
     form = []
     flash.each do |k,m|
@@ -6,6 +7,7 @@ module ApplicationHelper
     end
     raw(form.flatten.map { |e| e.mb_chars }.join())
   end
+  
   def authentication_error
     return "" if resource.errors.empty?
 
