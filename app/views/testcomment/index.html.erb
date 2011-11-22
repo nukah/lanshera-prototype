@@ -1,0 +1,20 @@
+<h1>Add commentary</h1>
+<div class="comment_form">
+<%= form_tag('/comment', :method => :post) do %>
+	<%= label_tag 'Link to post:' %>
+	<%= text_field_tag 'link', nil, :placeholder => 'Enter link to LJ post' %>
+	<%= label_tag 'LJ Login' %>
+	<%= text_field_tag 'login', nil, :placeholder => 'LJ Login' %>
+	<%= label_tag 'LJ Password' %>
+	<%= text_field_tag 'password', nil, :placeholder => 'LJ Password' %>
+	<%= label_tag 'Comment subject' %>
+	<%= text_field_tag 'subject', nil, :placeholder => 'Subject text' %>
+	<%= label_tag 'Comment text' %>
+	<%= text_area_tag 'body', nil, :size => "45x10" %>
+	
+	<%= submit_tag 'Send' %>
+<% end %>
+</div>
+<% content_for(:sidebar) do %>
+	<%= link_to 'Add commentary', add_comment_path %>
+<% end %>

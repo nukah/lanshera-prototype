@@ -11,21 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
-
-  create_table "account_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ljaccounts", :force => true do |t|
-    t.string   "name"
-    t.integer  "service_id"
-    t.string   "service_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 4) do
 
   create_table "resumes", :force => true do |t|
     t.string "firstname"
@@ -36,7 +22,9 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   create_table "services", :force => true do |t|
-    t.string   "name"
+    t.string   "login"
+    t.string   "password"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

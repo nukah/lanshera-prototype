@@ -3,6 +3,18 @@ $aml_hover_color: #FAF2F0;
 $aml_color: #9AAEB9;
 $content_color: #F7F7F7;
 /* ======= top level blocks ======= */
+a {
+	font-weight: bold;
+	text-decoration: none;
+	border-bottom: 1px dashed red;
+	color: red;
+	&:visited {
+		color: green;
+	}
+	&:hover {
+		color: orange;
+	}
+}
 body {
 	font: 14px Georgia, "Lucida Grande";
 	background: url(<%= asset_path('header_pattern.gif') %>) repeat;
@@ -83,7 +95,7 @@ input {
 	border: 2px solid #EB5339;
 	background-color: #F8CBC2;
 }
-.alert {
+.alert, .warning {
 	@extend .message;
 	background-image: url(<%= image_path('notifications/error.png') %>);
 	border: 2px solid #FFC140;
@@ -167,6 +179,7 @@ input {
 	padding-left: 10px;
 	padding-top: 4px;
 	a {
+		font-weight: normal;
 		color: $aml_color;
 		font-size: 18px;
 		text-decoration: none;

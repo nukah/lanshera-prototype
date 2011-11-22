@@ -1,0 +1,10 @@
+.comment_form {
+	padding-top: 1em;
+	padding-left: 1em;
+	& input,label {
+		display: block;
+	}
+	input[type='submit'] {
+		margin-top: 1em;
+	}
+}
