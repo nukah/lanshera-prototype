@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails'
 gem 'rails-i18n'
 gem 'sqlite3'
 gem 'devise'
-gem 'compass'
+gem 'jquery-rails'
+gem 'capistrano'
 
 group :development do 
 #    gem 'rails-dev-boost'
@@ -26,6 +27,4 @@ group :test do
   gem 'rspec-rails'
 end
 
-gem 'jquery-rails'
-gem 'capistrano'
 
