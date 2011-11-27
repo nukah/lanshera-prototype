@@ -1,0 +1,7 @@
+<h1>Импортирование постов</h1>
+
+Выберите аккаунт для импорта:
+<%= form_for :accounts, :url => import_blog_url, :method => :post do %>
+	<%= select_tag 'account', options_from_collection_for_select(@accounts, 'id', 'login') %>
+	<%= submit_tag 'Go' %>
+<% end %>

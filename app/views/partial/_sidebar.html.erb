@@ -1,3 +1,5 @@
-<% content_for?(:sidebar) do %>
-	<%= yield :sidebar %>
-<% end %>
+<nav>
+	<li><%= link_to t('manage_account'), account_path %></li>
+	<li><%= link_to t('add_account'), new_account_path %></li>
+	<li><%= link_to t('import_posts'), show_blog_path %></li>
+</nav>

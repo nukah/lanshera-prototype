@@ -3,15 +3,21 @@ $aml_hover_color: #FAF2F0;
 $aml_color: #9AAEB9;
 $content_color: #F7F7F7;
 /* ======= top level blocks ======= */
+label {
+	display: block;
+}
 a {
+	font-family: Tahoma;
+	text-shadow: black 2px 2px 0px;
 	font-weight: bold;
 	text-decoration: none;
-	border-bottom: 1px dashed red;
-	color: red;
+	border-bottom: 1px white dotted;
+	color: white;
 	&:visited {
-		color: green;
+		color: white;
 	}
 	&:hover {
+		border-bottom: 1px orange dotted;
 		color: orange;
 	}
 }
@@ -34,8 +40,10 @@ input {
     -moz-border-radius:3px;
     border:2px solid #382828;
 	&[type=submit] {
+		display: block;
 		width: auto;
 		height: auto;
+		margin-top: 15px;
 		padding: 2px 15px 2px 15px;
 	}
 	&:focus {
@@ -67,7 +75,6 @@ input {
 .message	{
 	cursor: pointer;
 	clear: both;
-	height: 30px;
 	font-size: 13px;
 	color: black;
 	position: relative;
@@ -134,12 +141,13 @@ input {
 		font-weight: bold;
 		font-size: 150%;
 		border-bottom: 1px dotted white;
+		margin-bottom: 15px;
 	}
 	h2 {
 		font-size: 130%;
-		border-bottom: 1px solid white;
 		line-height: 30px;
 		padding-left: 15px;
+		color: gray;
 	}
 	p {
 		text-indent: 10px;
@@ -271,4 +279,11 @@ input {
 
 .invisible {
 	display: none;
+}
+.add_account_form {
+	text-align: center;
+	margin-top: 30px;
+	& input[type='submit'] {
+		margin-left: 35%;
+	}
 }

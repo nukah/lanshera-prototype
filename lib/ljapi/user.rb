@@ -2,9 +2,8 @@ require 'ljapi/request'
 
 module LJAPI
   class User
-    attr_accessor :username, :password, :fullname
-    
-    def initialize(user=nil, password=nil)
+    attr_accessor :username, :password
+    def initialize(user, password)
       @username = user
       @password = password
     end

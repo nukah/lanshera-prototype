@@ -23,4 +23,10 @@ module ApplicationHelper
 
     html.html_safe
   end
+  
+  def form_errors(record)
+    tag = []
+    record.errors.full_messages.each { |m| tag << content_tag(:div, content_tag(:p, m.to_s), :class => "error message") }
+    raw(tag.flatten.map { |e| e.mb_chars }.join())
+  end
 end

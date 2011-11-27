@@ -1,16 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.1.2'
 gem 'rails-i18n'
-gem 'sqlite3'
 gem 'devise'
 gem 'jquery-rails'
 gem 'capistrano'
 
 group :development do 
 #    gem 'rails-dev-boost'
-    gem 'active_reload'
+#    gem 'active_reload'
+    gem 'sqlite3'
     gem 'pry-rails'
+end
+
+group :production do
+
 end
 
 group :assets do
