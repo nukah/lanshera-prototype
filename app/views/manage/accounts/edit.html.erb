@@ -1,7 +1,7 @@
 <h1><%= t('edit_account') %></h1>
 <%= form_errors(@service) %>
 
-<%= form_for :service, :url => update_account_url(@service), :method => :put do %>
+<%= form_for :service, :url => manage_account_path(@service), :method => :put do %>
 	<%= label_tag 'login' %><%= text_field_tag :login, @service.login %>
 	<%= label_tag 'password' %><%= password_field_tag :password %>
 	

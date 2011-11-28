@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class Manage::AccountsController < ApplicationController
   layout 'account'
   before_filter :authenticate_user!
   
@@ -16,7 +16,7 @@ class AccountController < ApplicationController
     end
   end
   
-  def show
+  def index
     @services = current_user.services
   end
   

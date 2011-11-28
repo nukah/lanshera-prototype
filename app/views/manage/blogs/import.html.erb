@@ -1,0 +1,4 @@
+<%= stylesheet_link_tag 'blogs' %>
+<h1><%= t('manage.posts.add_title')%></h1>
+
+<%= render :partial => 'manage/blogs/post', :collection => @posts %>

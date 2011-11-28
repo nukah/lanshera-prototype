@@ -9,9 +9,25 @@ ru:
     password_field: 'Пароль'
     edit: 'Изменить'
 
+    manage:
+        accounts: 
+            title: 'Управление аккаунтами'
+            link: 'Аккаунты'
+            add: 'Добавить аккаунт'
+            edit_link: 'изменить аккаунт'
+            delete_link: 'удалить аккаунт'
+        blogs:
+            title: 'Управление блогами'
+            import_title: 'Импортирование блога'
+            choose_account: 'Выберите аккаунт'
+            import: 'Импортировать'
+        
+        posts: 
+            title: 'Управление постами'
+            add_title: 'Добавление постов'
+            link: 'ссылка на пост'
+
     user_accounts: 'Аккаунты пользователя'
-    delete_account: 'удалить аккаунт'  
-    manage_account: 'Управление учётной записью'
     activerecord:
         models:
             user: 'Пользователь'
@@ -23,6 +39,9 @@ ru:
             user:
                 password: 'Пароль'
     accounts_not_found: 'Отсутствуют добавленные аккаунты'
-    add_account: 'Добавить аккаунт'
     account_login: 'Логин пользователя ЖЖ'
     account_password: 'Пароль пользователя ЖЖ'
+    lj:
+        error:
+            1: 'Сервис Livejournal не доступен в данный момент'
+            2: 'Ошибка при доступе к сервису LJ'

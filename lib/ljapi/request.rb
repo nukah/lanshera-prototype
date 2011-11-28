@@ -18,11 +18,12 @@ module LJAPI
     class LJException < Exception 
       attr_accessor :message
       def initialize(error)
-        @message = error
+        @code = error
       end
     end
     
     class Req
+      MAX_ATTEMPTS = 3
       def initialize(call, user)
         @call = call
         @user = user
@@ -37,7 +38,8 @@ module LJAPI
             'username' => user.username,
             'auth_method' => 'challenge',
             'auth_challenge' => challenge,
-            'auth_response' => response
+            'auth_response' => response,
+            'usejournal' => user.username,
             })
         end
         @result = {}
@@ -45,9 +47,19 @@ module LJAPI
 
       def run
         connection = XMLRPC::Client.new('www.livejournal.com', '/interface/xmlrpc')
+        connection.timeout = 60
         command = 'LJ.XMLRPC'.concat('.').concat(@call)
-        ok, res = connection.call2(command, @request)
-        raise LJException.new(res) if !ok
+        attempts = 0
+        begin
+          attempts += 1
+          ok, res = connection.call2(command, @request)
+          puts [ok,res]
+        rescue EOFError
+          retry if(attempts < MAX_ATTEMPTS)
+        rescue Timeout::Error
+          raise LJException.new(1)
+        end
+        raise LJException.new(2) if !ok
         @result = res if ok
       end
     end

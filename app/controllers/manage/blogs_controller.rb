@@ -1,7 +1,7 @@
-class BlogsController < ApplicationController
+class Manage::BlogsController < ApplicationController
   before_filter :authenticate_user!
   
-  def show
+  def index
     @accounts = current_user.services
   end
 
@@ -11,9 +11,12 @@ class BlogsController < ApplicationController
     begin
       @posts = LJAPI::Request::GetPosts.new(user).run
     rescue LJAPI::Request::LJException => e
-      flash[:error] = e.message
-      redirect_to import_account_path
+      flash[:error] = t('ljapi.error.%s' % e.code)
+      redirect_to manage_blog_path
     end
   end
-
+  
+  def show
+    
+  end
 end

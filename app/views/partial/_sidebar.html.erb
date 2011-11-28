@@ -1,5 +1,8 @@
 <nav>
-	<li><%= link_to t('manage_account'), account_path %></li>
-	<li><%= link_to t('add_account'), new_account_path %></li>
-	<li><%= link_to t('import_posts'), show_blog_path %></li>
+	<h3><%= t('manage.accounts.title') %></h3>
+	<li><%= link_to t('manage.accounts.link'), manage_accounts_path %></li>
+	<li><%= link_to t('manage.accounts.add'), new_manage_account_path %></li>
+	<h3><%= t('manage.blogs.title') %></h3>
+	<li><%= link_to t('manage.blogs.import_title'), manage_blog_path %></li>
+	<h3><%= t('manage.posts.title') %></h3>
 </nav>

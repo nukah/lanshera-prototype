@@ -1,0 +1,6 @@
+<h1><%= t('manage.blogs.import_title')%></h1>
+<h2><%= t('manage.blogs.choose_account') %></h2>
+<%= form_for :accounts, :url => manage_import_path, :method => :post do %>
+	<%= select_tag 'account', options_from_collection_for_select(@accounts, 'id', 'login') %>
+	<%= submit_tag t('manage.blogs.import') %>
+<% end %>

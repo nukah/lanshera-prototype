@@ -1,8 +1,8 @@
 <%= form_errors(@service) %>
 <div class="add_account_form">
-<%= form_for @service, :url => { :action => 'create' } do |f| %>
+<%= form_for @service, :url => manage_accounts_path, :method => :post do |f| %>
 	<%= f.label :login, t('account_login') %> <%= f.text_field :login %>
 	<%= f.label :password, t('account_password') %> <%= f.password_field :password %>
-	<%= f.submit t('add_account') %>
+	<%= f.submit t('manage.accounts.add') %>
 <% end %>
 </div>

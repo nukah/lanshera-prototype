@@ -5,10 +5,11 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'jquery-rails'
 gem 'capistrano'
+gem 'sanitize'
 
 group :development do 
 #    gem 'rails-dev-boost'
-#    gem 'active_reload'
+    gem 'active_reload'
     gem 'sqlite3'
     gem 'pry-rails'
 end
