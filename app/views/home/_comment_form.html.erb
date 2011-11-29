@@ -1,0 +1,9 @@
+<%= form_for @comment, :url => post_comment_url(@post) do %>
+
+	<%= label_tag :account, t('manage.posts.choose_account')%>
+	<%= select_tag 'account', options_from_collection_for_select(@accounts, 'id', 'login') %>
+	
+	<%= label_tag :comment, t('manage.posts.comment_text')%>
+	<%= text_area_tag :text %>
+	<%= submit_tag t('send') %>
+<% end %>

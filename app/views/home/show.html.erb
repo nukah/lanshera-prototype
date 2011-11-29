@@ -1,0 +1,11 @@
+<%= content_tag(:h1, (@post.subject or @post.id))%>
+
+<%= content_tag(:p, @post.text) %>
+
+<hr>
+<% if @comments.any? %>
+	<%= render :partial => 'comment', :collection => @comments %>
+<% end %>
+<% if current_user %>
+	<%= render :partial => 'comment_form' %>
+<% end %>

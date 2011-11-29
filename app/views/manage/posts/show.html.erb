@@ -1,0 +1,14 @@
+<h1><%= t('manage.posts.control') %></h1>
+
+<%= content_tag(:h2, @post.subject) if @post.subject %>
+
+<%= content_tag(:p, present_time(@post.time)) %>
+<br>
+<%= content_tag(:p, @post.text) %>
+
+
+<% if @comments.any? %>
+<hr>
+	<%= content_tag(:h2, t('manage.posts.comments')) %>
+	<%= render :partial => 'manage/posts/comment', :collection => @comments %>
+<% end %>

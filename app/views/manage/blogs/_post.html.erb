@@ -1,13 +1,13 @@
-<div class="<%= post['sec'] ? 'private' : 'normal' %>">
-	<%= content_tag(:strong, post['subject']) if post['subject'] %>
-	<%= content_tag(:p, post['body'])%>
-	<%= content_tag(:p, present_time(post['time']), :class => 'time')%>
+<div class="<%= post.sec ? 'private' : 'normal' %>" id="post_<%= post.itemid %>">
+	<%= content_tag(:strong, post.subject) if post.subject %>
+	<%= content_tag(:p, post.body)%>
+	<%= content_tag(:p, present_time(post.time), :class => 'time')%>
 	<%= content_tag(:ul,:class => 'links') do %>
-		<li><%= link_to(t('manage.posts.link'), post['url']) %></li> | 
-		<% if post['sec'] %>
-			<li><%= link_to 'unlock_and_add', '#', :id => 'add_link' %></li>
+		<li><%= link_to(t('manage.posts.link'), post.url) %></li> | 
+		<% if post.sec %>
+			<li><%= link_to 'unlock_and_add', manage_unlock_imported_post_path(post.itemid), :remote => true , :id => 'unlock_link' %></li>
 		<% else %>
-			<li><%= link_to 'add_post', '#', :id => 'add_link' %></li>
+			<li><%= link_to 'add_post', manage_add_imported_post_path(post.itemid), :remote => true, :id => 'add_link' %></li>
 		<% end %>
 	<% end %>
 </div>

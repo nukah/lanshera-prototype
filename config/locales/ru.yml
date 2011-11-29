@@ -4,7 +4,9 @@ ru:
     logout: 'Выйти из системы'
     signup: 'Зарегистрироваться'
     error: 'Ошибка'
-
+    account: 'Авторизация'
+    url: 'ссылка'
+    latest_posts: 'Последние посты'
     login_field: 'Логин'
     password_field: 'Пароль'
     edit: 'Изменить'
@@ -21,11 +23,18 @@ ru:
             import_title: 'Импортирование блога'
             choose_account: 'Выберите аккаунт'
             import: 'Импортировать'
+            cache_expired: 'Повторно импортируйте блог'
         
         posts: 
             title: 'Управление постами'
             add_title: 'Добавление постов'
-            link: 'ссылка на пост'
+            link: 'Ваши посты'
+            added: 'пост добавлен'
+            control: 'Управление постом'
+            comments: 'Комментарии'
+            comment_text: 'Текст комментария'
+            choose_account: 'Выбрать аккаунт'
+            delete_comment: 'Удалить комментарий'
 
     user_accounts: 'Аккаунты пользователя'
     activerecord:
@@ -41,6 +50,7 @@ ru:
     accounts_not_found: 'Отсутствуют добавленные аккаунты'
     account_login: 'Логин пользователя ЖЖ'
     account_password: 'Пароль пользователя ЖЖ'
+    send: 'Отправить'
     lj:
         error:
             1: 'Сервис Livejournal не доступен в данный момент'

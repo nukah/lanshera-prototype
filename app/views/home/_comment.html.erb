@@ -1,0 +1,7 @@
+<%= content_tag(:b, comment.user) %>
+	<%= content_tag :p do %>
+		<%= content_tag :b, comment.created_at %>
+		<%= content_tag :p, comment.text %>
+		<%= content_tag :strong, link_to(t('url'), comment.url) %>
+	<% end %>
+<hr>

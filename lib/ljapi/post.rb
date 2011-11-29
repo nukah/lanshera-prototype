@@ -4,10 +4,43 @@ require 'sanitize'
 
 module LJAPI
   module Request
+    class ResultHash < Hash
+      def to_a
+        self.values
+      end
+      def method_missing(method, *opts)
+        m = method.to_s
+        if self.has_key?(m)
+          return self[m]
+        elsif self.has_key?(m.to_sym)
+          return self[m.to_sym]
+        end
+        super
+      end
+    end
+    
+    class AddComment < Req
+      def initialize(user, id, anum, text)
+        super('addcomment', user)
+        @id = id * 256 + anum
+        @text = text
+        @request.update({
+          'body' => @text,
+          'ditemid' => @id
+        })
+      end
+      
+      def run
+        super
+        @result['commentlink']
+      end
+    end
+    
     class EditPost < Req
       def initialize(user, id, options)
         super('editevent', user)
         @id = id
+        @request.update({ 'itemid' => @id })
         @request.update(options) if options
       end
       
@@ -34,17 +67,17 @@ module LJAPI
       
       def run
         super
-        @posts = []
+        @posts = ResultHash.new
         @result['events'].each { |item|
-          probe = {}
-          probe['id'] = item['itemid']
-          probe['subject'] = item['subject'].force_encoding('utf-8').encode if item['subject']
+          probe = ResultHash.new
+          probe['itemid'] = item['itemid']
+          probe['subject'] = item['subject'] and item['subject'].force_encoding('utf-8').encode or nil
           probe['body'] = Sanitize.clean(item['event'].force_encoding('utf-8').encode)
           probe['time'] = LJAPI::Request::ljtime_to_time(item['logtime'])
           probe['url'] = item['url']
-          probe['sec'] = item['security'].force_encoding('utf-8').encode if item['security']
+          probe['sec'] = item['security'] and item['security'].force_encoding('utf-8').encode or nil
           probe['anum'] = item['anum']
-          @posts << probe
+          @posts[item['itemid']] = probe
         }
         @posts
       end

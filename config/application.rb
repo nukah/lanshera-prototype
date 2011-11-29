@@ -11,7 +11,6 @@ module Radibloga
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
 
@@ -29,7 +28,6 @@ module Radibloga
     config.i18n.locale = :ru
     config.active_record.timestamped_migrations = false
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.encoding = "utf-8"
     config.filter_parameters += [:password]
     config.assets.enabled = true

@@ -1,4 +1,4 @@
-homepage
-<% content_for(:sidebar) do %>
-	<%= link_to 'Add commentary', add_comment_path %>
-<% end %>
+<h1><%= t('latest_posts') %></h1>
+
+<%= render :partial => 'post', :collection => @posts %>
+

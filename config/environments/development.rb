@@ -1,3 +1,4 @@
+require 'active_support/cache/dalli_store'
 Radibloga::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -24,7 +25,7 @@ Radibloga::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-
+  config.cache_store = :dalli_store, 'localhost'
   # Expands the lines which load the assets
   config.assets.debug = false
 end

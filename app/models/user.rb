@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :resume
   has_many :services
+  has_many :posts
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :encryptable

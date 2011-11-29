@@ -1,0 +1,4 @@
+<h2><%= link_to (post.subject or post.id), show_post_path(post.id) %></h2>
+<BR>
+<%= content_tag(:p, truncate(post.text)) %>
+<hr>

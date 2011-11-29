@@ -5,6 +5,7 @@ require 'date'
 
 module LJAPI
   module Request
+    MAX_ATTEMPTS = 3
     
     def self.time_to_ljtime(time)
           time.strftime '%Y-%m-%d %H:%M:%S'
@@ -16,14 +17,13 @@ module LJAPI
     end
     
     class LJException < Exception 
-      attr_accessor :message
+      attr_accessor :code
       def initialize(error)
         @code = error
       end
     end
     
     class Req
-      MAX_ATTEMPTS = 3
       def initialize(call, user)
         @call = call
         @user = user
@@ -53,7 +53,6 @@ module LJAPI
         begin
           attempts += 1
           ok, res = connection.call2(command, @request)
-          puts [ok,res]
         rescue EOFError
           retry if(attempts < MAX_ATTEMPTS)
         rescue Timeout::Error

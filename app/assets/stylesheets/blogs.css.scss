@@ -26,6 +26,12 @@
 			display: inline;
 		}
 	}
+	em {
+		text-transform: capitalize;
+		font-size: 110%;
+		font-weight: bold;
+		color: #FFE600;
+	}
 }
 .normal {
 	@extend .post_box;
@@ -38,5 +44,5 @@
 }
 .added {
 	@extend .post_box;
-	background-color: #9AB394;
+	background-color: #5A823E;
 }
