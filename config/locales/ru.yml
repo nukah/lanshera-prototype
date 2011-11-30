@@ -46,7 +46,9 @@ ru:
                 login: 'Логин'
                 password: 'Пароль'
             user:
+                email: 'Почтовый адрес'
                 password: 'Пароль'
+                password_confirmation: 'Подтверждение пароля'
     accounts_not_found: 'Отсутствуют добавленные аккаунты'
     account_login: 'Логин пользователя ЖЖ'
     account_password: 'Пароль пользователя ЖЖ'

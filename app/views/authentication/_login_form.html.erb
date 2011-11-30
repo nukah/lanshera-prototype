@@ -1,8 +1,8 @@
 <div class="auth_header">
 	<%= content_tag(:h3, t('login')) %>
 	<ul>
-		<li><%= link_to "Register",'#', :id => 'register_link' %></li>
-		<li>restore password</li>
+		<li><%= link_to "Зарегистрироваться",'#', :id => 'register_link' %></li>
+		<li>Восстановить пароль</li>
 	</ul>
 </div>
 <div class="auth_content">
@@ -17,10 +17,10 @@
 	</dl>
 	</fieldset>
 	<div class="submit">
-		<%= f.submit "Sign in" %>
+		<%= f.submit "Войти" %>
 	</div>
 	<div class="remember">
-		<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+		<%= f.check_box :remember_me %> <%= f.label :remember_me, 'запомнить' %>
 	</div>
 	<% end %>
 </div>
