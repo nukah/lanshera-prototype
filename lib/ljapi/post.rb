@@ -71,11 +71,11 @@ module LJAPI
         @result['events'].each { |item|
           probe = ResultHash.new
           probe['itemid'] = item['itemid']
-          probe['subject'] = item['subject'] and item['subject'].force_encoding('utf-8').encode or nil
-          probe['body'] = Sanitize.clean(item['event'].force_encoding('utf-8').encode)
+          probe['subject'] = item['subject'] and item['subject'].to_s.force_encoding('utf-8').encode or nil
+          probe['body'] = Sanitize.clean(item['event'].to_s.force_encoding('utf-8').encode)
           probe['time'] = LJAPI::Request::ljtime_to_time(item['logtime'])
           probe['url'] = item['url']
-          probe['sec'] = item['security'] and item['security'].force_encoding('utf-8').encode or nil
+          probe['sec'] = item['security'] and item['security'].to_s.force_encoding('utf-8').encode or nil
           probe['anum'] = item['anum']
           @posts[item['itemid']] = probe
         }
