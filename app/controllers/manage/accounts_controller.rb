@@ -7,10 +7,11 @@ class Manage::AccountsController < ApplicationController
   end
 
   def create
-    @service = Service.new(params[:service])
+    flash[:notice] = t('account_exists') and redirect_to manage_accounts_path and return if Service.exists?(:login => params[:service][:login])
+    @service = Service.find_or_create_by_login(params[:service])
     if @service.save
       current_user.services << @service
-      redirect_to manage_accounts_path
+      redirect_to manage_accounts_path and return
     else
       render :new
     end
