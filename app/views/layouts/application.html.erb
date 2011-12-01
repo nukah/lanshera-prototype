@@ -37,6 +37,8 @@
 		</div>
 		<div class="grid_3 sidebar">
 			<%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'partial/sidebar') %>
+			<BR>
+			<span class="version">version: <%= APP_VERSION %></span>
 		</div>
 		<div class="clear"></div>
 	</div>
