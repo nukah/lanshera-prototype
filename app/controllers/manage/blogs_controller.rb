@@ -1,9 +1,15 @@
 class Manage::BlogsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
   before_filter :authenticate_user!
   def index
     @accounts = current_user.services
   end
-
+  
+  def not_found(exception)
+    flash[:error] = t('record_not_found')
+    redirect_to(:back)
+  end
+  
   def import
     account = Service.find(params[:account])
     user = LJAPI::User.new(account.login, account.password)

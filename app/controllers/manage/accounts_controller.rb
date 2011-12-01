@@ -20,7 +20,7 @@ class Manage::AccountsController < ApplicationController
     @services = current_user.services
   end
   
-  def delete
+  def destroy
     Service.delete(params[:id])
     redirect_to manage_accounts_path
   end

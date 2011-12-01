@@ -22,6 +22,25 @@ body {
 	background: url(<%= asset_path('header_pattern.gif') %>) repeat;
 }
 
+select {
+	width: 150px;
+	color: #750600;
+	background-color: #F0D2B8;
+	outline:none;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border:2px solid #382828;
+	font-size: 15px;
+	&:disabled {
+		color: #bababa;
+		background-color: #999999;
+	}
+}
+
 input {
 	width: auto;
 	font-size: 15px;
@@ -47,6 +66,10 @@ input {
 	    -webkit-box-shadow: 0 0 5px #717BE0; 
 	    -moz-box-shadow: 0 0 5px #717BE0;
 	    border:2px solid #717BE0;
+	}
+	&:disabled {
+		color: #bababa;
+		background-color: #999999;
 	}
 }
 
@@ -142,8 +165,8 @@ input {
 	h2 {
 		font-size: 130%;
 		line-height: 30px;
-		padding-left: 15px;
-		color: gray;
+		padding-bottom: 10px;
+		color: #aaaaaa;
 	}
 	p {
 		text-indent: 10px;
