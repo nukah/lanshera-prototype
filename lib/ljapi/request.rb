@@ -55,7 +55,7 @@ module LJAPI
           ok, res = connection.call2(command, @request)
         rescue EOFError
           retry if(attempts < MAX_ATTEMPTS)
-        rescue Timeout::Error
+        rescue Timeout::Error, Errno::ETIMEDOUT
           raise LJException.new('not_available')
         end
         raise LJException.new('access_error') if !ok
