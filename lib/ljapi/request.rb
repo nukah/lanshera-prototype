@@ -56,9 +56,9 @@ module LJAPI
         rescue EOFError
           retry if(attempts < MAX_ATTEMPTS)
         rescue Timeout::Error
-          raise LJException.new(1)
+          raise LJException.new('not_available')
         end
-        raise LJException.new(2) if !ok
+        raise LJException.new('access_error') if !ok
         @result = res if ok
       end
     end

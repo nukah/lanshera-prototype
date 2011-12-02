@@ -19,6 +19,8 @@ class Manage::BlogsController < ApplicationController
     else
       begin
         @posts = LJAPI::Request::GetPosts.new(user).run
+        # TODO : Optimize atomic transaction for deleting existing posts
+        @posts.reject! { |k,v| account.posts.exists?(k) }
         Rails.cache.write('posts', @posts, :expires_in => 5.minutes)
       rescue LJAPI::Request::LJException => e
         flash[:error] = t('ljapi.error.%s' % e.code)
@@ -41,6 +43,8 @@ class Manage::BlogsController < ApplicationController
       
       if @post.save
         current_user.posts << @post
+        @collection = @collection.reject { |k,v| k == @segment.itemid }
+        Rails.cache.write('posts', @collection)
         respond_to do |format|
           format.js { render }
         end
@@ -73,6 +77,8 @@ class Manage::BlogsController < ApplicationController
         
         if @post.save
           current_user.posts << @post
+          @collection = @collection.reject { |k,v| k == @segment.itemid }
+          Rails.cache.write('posts', @collection)
           respond_to do |format|
             format.js { render }
           end

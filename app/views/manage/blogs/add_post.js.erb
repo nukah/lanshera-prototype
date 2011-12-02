@@ -1,3 +1,5 @@
 $(document).ready(function() {
-	$('#post_<%= @segment.itemid %>').removeClass('normal').addClass('added');
+	var p = $('#post_<%= @segment.itemid %>');
+	p.removeClass('normal').addClass('added');
+	p.fadeOut('slow');
 });
