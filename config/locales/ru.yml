@@ -100,7 +100,7 @@ ru:
     account_login: 'Логин пользователя ЖЖ'
     account_password: 'Пароль пользователя ЖЖ'
     send: 'Отправить'
-    lj:
+    ljapi:
         error:
             not_available: 'Сервис Livejournal не доступен в данный момент'
             access_error: 'Ошибка при доступе к сервису LJ'

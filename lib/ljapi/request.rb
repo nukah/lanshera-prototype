@@ -47,7 +47,7 @@ module LJAPI
 
       def run
         connection = XMLRPC::Client.new('www.livejournal.com', '/interface/xmlrpc')
-        connection.timeout = 60
+        connection.timeout = 30
         command = 'LJ.XMLRPC'.concat('.').concat(@call)
         attempts = 0
         begin
