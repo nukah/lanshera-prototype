@@ -22,7 +22,7 @@ class Manage::BlogsController < ApplicationController
       begin
         @posts = LJAPI::Request::GetPosts.new(user).run
         # TODO : Optimize atomic transaction for deleting existing posts
-        @posts.reject! { |k,v| account.posts.exists?(k) }
+        @posts.reject! { |k,v| account.posts.exists?(:post_id => v['itemid']) }
         write_cache(@posts)
       rescue LJAPI::Request::LJException => e
         flash[:error] = t('ljapi.error.%s' % e.code)
@@ -34,17 +34,13 @@ class Manage::BlogsController < ApplicationController
   def add_post
     if Rails.cache.exist?(get_current_tag)
       @collection = read_current_cache()
-      @segment = @collection.fetch(params[:id].to_i)
+      @p = @collection.fetch(params[:id].to_i)
       
-      @post = Post.new
-      @post.subject = @segment.subject
-      @post.text = @segment.body
-      @post.anum = @segment.anum
-      @post.time = @segment.time
-      @post.post_id = @segment.itemid
+      @post = Post.new(:subject => @p.subject, :text => @p.body, :anum => @p.anum, :time => @p.time, :post_id => @p.itemid)
       
       if @post.save
         current_user.posts << @post
+        current_account.posts << @post
         @collection = @collection.reject { |k,v| k == @segment.itemid }
         write_cache(@collection)
         respond_to do |format|
@@ -60,9 +56,9 @@ class Manage::BlogsController < ApplicationController
   def unlock_add_post
     account = Service.find(session[:current_service])
     user = LJAPI::User.new(account.login,account.password)
-    if Rails.cache.exist?('posts')
+    if Rails.cache.exist?(get_current_tag())
       @collection = read_current_cache()
-      @segment = @collection.fetch(params[:id].to_i)
+      @p = @collection.fetch(params[:id].to_i)
       
       begin
         @update = LJAPI::Request::EditPost.new(user, params[:id].to_i, { 'security' => 'public', 'event' => @segment.body, 'subject' => @segment.subject }).run
@@ -71,15 +67,11 @@ class Manage::BlogsController < ApplicationController
         redirect_to manage_blog_path
       end
       if @update
-        puts @update
-        @post = Post.new
-        @post.subject = @segment.subject
-        @post.text = @segment.body
-        @post.time = @segment.time
-        @post.post_id = @update['itemid']
+        @post = Post.new(:subject => @p.subject, :text => @p.body, :anum => @update['anum'], :time => @p.time, :post_id => @update['itemid'])
         
         if @post.save
           current_user.posts << @post
+          current_account.posts << @post
           @collection = @collection.reject { |k,v| k == @segment.itemid }
           write_cache(@collection)
           respond_to do |format|
@@ -98,10 +90,16 @@ class Manage::BlogsController < ApplicationController
   end
   
   private
+  def current_account
+    account = Service.find(session[:current_service]) if session[:current_service]
+    account ||= current_user.service.first
+    account
+  end
+  
   def get_current_tag()
     user = current_user.id.to_s
-    service = session[:current_service] or 1
-    tag = "posts_#{user}_#{service.to_s}"
+    service = current_account
+    tag = "posts_#{user}_#{service.id}"
     tag
   end
   
