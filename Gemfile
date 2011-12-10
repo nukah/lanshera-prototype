@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'capistrano'
 gem 'sanitize'
 gem 'dalli'
+gem 'vidibus-routing_error'
 
 group :development do 
 #    gem 'rails-dev-boost'

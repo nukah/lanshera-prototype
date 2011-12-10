@@ -47,15 +47,16 @@ module LJAPI
 
       def run
         connection = XMLRPC::Client.new('www.livejournal.com', '/interface/xmlrpc')
-        connection.timeout = 30
+        connection.timeout = 60
         command = 'LJ.XMLRPC'.concat('.').concat(@call)
         attempts = 0
         begin
           attempts += 1
           ok, res = connection.call2(command, @request)
+          puts [ok,res]
         rescue EOFError
           retry if(attempts < MAX_ATTEMPTS)
-        rescue Timeout::Error, Errno::ETIMEDOUT
+        rescue Timeout::Error, Errno::ETIMEDOUT, RuntimeError
           raise LJException.new('not_available')
         end
         raise LJException.new('access_error') if !ok
