@@ -61,7 +61,7 @@ class Manage::BlogsController < ApplicationController
       @p = @collection.fetch(params[:id].to_i)
       
       begin
-        @update = LJAPI::Request::EditPost.new(user, params[:id].to_i, { 'security' => 'public', 'event' => @segment.body, 'subject' => @segment.subject }).run
+        @update = LJAPI::Request::EditPost.new(user, params[:id].to_i, { 'security' => 'public', 'event' => @p.body, 'subject' => @p.subject }).run
       rescue LJAPI::Request::LJException => e
         flash[:error] = t('ljapi.error.%s' % e.code)
         redirect_to manage_blog_path
