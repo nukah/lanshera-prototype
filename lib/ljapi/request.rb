@@ -5,7 +5,7 @@ require 'date'
 
 module LJAPI
   module Request
-    MAX_ATTEMPTS = 3
+    MAX_ATTEMPTS = 5
     
     def self.time_to_ljtime(time)
           time.strftime '%Y-%m-%d %H:%M:%S'
@@ -53,10 +53,9 @@ module LJAPI
         begin
           attempts += 1
           ok, res = connection.call2(command, @request)
-          puts [ok,res]
-        rescue EOFError
+        rescue EOFError, RuntimeError
           retry if(attempts < MAX_ATTEMPTS)
-        rescue Timeout::Error, Errno::ETIMEDOUT, RuntimeError
+        rescue Timeout::Error, Errno::ETIMEDOUT
           raise LJException.new('not_available')
         end
         raise LJException.new('access_error') if !ok
