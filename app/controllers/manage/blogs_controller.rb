@@ -41,7 +41,7 @@ class Manage::BlogsController < ApplicationController
       if @post.save
         current_user.posts << @post
         current_account.posts << @post
-        @collection = @collection.reject { |k,v| k == @segment.itemid }
+        @collection = @collection.reject { |k,v| k == @p.itemid }
         write_cache(@collection)
         respond_to do |format|
           format.js { render }
@@ -72,7 +72,7 @@ class Manage::BlogsController < ApplicationController
         if @post.save
           current_user.posts << @post
           current_account.posts << @post
-          @collection = @collection.reject { |k,v| k == @segment.itemid }
+          @collection = @collection.reject { |k,v| k == @p.itemid }
           write_cache(@collection)
           respond_to do |format|
             format.js { render }
